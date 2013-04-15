@@ -27,8 +27,8 @@ ifeq ('$(TARGET)','RELEASE')
 endif
 	
 libbooststomp.so.$(VERSION): 
-	$(CXX) -o libbooststomp.so.$(VERSION) BoostStomp.o StompFrame.o helpers.o \
-	-shared -Wl,-soname,libbooststomp.so.$(VERSION) $(LDFLAGS)
+	$(CXX) -dynamiclib -install_name libbooststomp.so.$(VERSION) $(LDFLAGS) \
+	-o libbooststomp.so.$(VERSION) BoostStomp.o StompFrame.o helpers.o
 ifeq ('$(TARGET)','RELEASE')
 	strip libbooststomp.so*
 endif
